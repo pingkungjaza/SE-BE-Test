@@ -33,7 +33,9 @@ const queryDataForCSV = async () => {
                     const newValue = { groupname: value.name[0], username: value.username[0], email: value.email[0] }
                     return newValue;
                 }
-        }).filter((fil) => fil !== undefined)
+        }).
+            filter((fil) => fil !== undefined).
+            sort((a, b) => a.groupname.localeCompare(b.groupname) && a.username.localeCompare(b.username))
 
         //write csv file
         const json2csvParser = new Json2csvParser({ header: true });
